@@ -25,12 +25,16 @@ exports = module.exports = function (app) {
 
   // API - Posts
   app.get('/api/post/list', keystone.middleware.api, routes.api.posts.list);
-  // app.all('/api/post/create', keystone.middleware.api, routes.api.posts.create);
   app.get('/api/post/:id', keystone.middleware.api, routes.api.posts.get);
+  // app.all('/api/post/create', keystone.middleware.api, routes.api.posts.create);
   // app.all('/api/post/:id/update', keystone.middleware.api, routes.api.posts.update);
   // app.get('/api/post/:id/remove', keystone.middleware.api, routes.api.posts.remove);
 
   // API - Categories
   app.get('/api/category/list', keystone.middleware.api, routes.api.categories.list);
   app.get('/api/category/:id', keystone.middleware.api, routes.api.categories.get);
+
+  // API - Menu Items
+  app.get('/api/menu-item/list', keystone.middleware.api, routes.api.menuItems.list);
+  app.get('/api/menu-item/:id', keystone.middleware.api, routes.api.menuItems.get);
 };
