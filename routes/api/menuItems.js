@@ -1,4 +1,5 @@
 const keystone = require('keystone');
+const _ = require('lodash');
 
 const MenuItem = keystone.list('MenuItem');
 
@@ -8,14 +9,21 @@ const MenuItem = keystone.list('MenuItem');
 exports.list = function (req, res) {
   MenuItem.model.find()
     .where('enabled', true)
-    .populate('categoryChildren')
     .exec((err, items) => {
       if (err) {
         return res.apiError('database error', err);
       }
 
-      res.apiResponse({
-        menuItems: items,
+      keystone.populateRelated(items, 'categoryChildren', (err) => {
+        if (err) {
+          return res.apiError('db populate error', err);
+        }
+
+        const pop = _.map(items, item => _.pick(item, 'key', 'name', 'categoryChildren'));
+
+        res.apiResponse({
+          menuItems: pop,
+        });
       });
     });
 };
