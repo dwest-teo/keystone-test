@@ -8,9 +8,9 @@
  */
 
 exports.create = {
-	User: [
-		{ 'name.first': 'Admin', 'name.last': 'User', 'email': 'dwest@theelegantoffice.com', 'password': 'admin', 'isAdmin': true },
-	],
+  User: [
+		{ 'name.first': 'Admin', 'name.last': 'User', email: 'dwest@theelegantoffice.com', password: 'admin', isAdmin: true },
+  ],
 };
 
 /*

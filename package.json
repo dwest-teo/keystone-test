@@ -1,7 +1,25 @@
 {
-  "name": "my-site",
-  "version": "0.0.0",
+  "name": "keystone-test",
+  "version": "0.0.1",
   "private": true,
+  "author": {
+    "name": "Donny West",
+    "email": "donnywest@gmail.com"
+  },
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwest-teo/keystone-test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dwest-teo/keystone-test/issues"
+  },
+  "homepage": "https://github.com/dwest-teo/keystone-test#readme",
+  "scripts": {
+    "lint": "xo --ignore public/*/**.js --quiet --fix",
+    "dev": "NODE_ENV=development node keystone.js",
+    "start": "NODE_ENV=production node keystone.js"
+  },
   "dependencies": {
     "keystone": "4.0.0-beta.5",
     "lodash": "^4.13.1",
@@ -10,17 +28,71 @@
     "express-handlebars": "3.0.0",
     "handlebars": "4.0.6",
     "node-sass": "4.5.0",
-    "node-sass-middleware": "0.11.0", 
-    "dotenv": "4.0.0", 
+    "node-sass-middleware": "0.11.0",
+    "dotenv": "4.0.0",
     "async": "2.1.4"
   },
   "devDependencies": {
-    "eslint": "3.15.0",
-    "eslint-config-keystone": "3.0.0",
-    "eslint-plugin-react": "^5.1.1"
+    "eslint-config-xo-react": "^0.11.1",
+    "eslint-plugin-react": "^6.10.3",
+    "xo": "^0.18.1"
   },
-  "scripts": {
-    "lint": "eslint .",
-    "start": "node keystone.js"
+  "engines": {
+    "node": "^7.10.0"
+  },
+  "xo": {
+    "envs": [
+      "node",
+      "es6",
+      "browser"
+    ],
+    "extends": "xo-react",
+    "space": true,
+    "rules": {
+      "unicorn/filename-case": 0,
+      "unicorn/number-literal-case": 0,
+      "no-multi-assign": 1,
+      "array-bracket-spacing": [
+        2,
+        "always"
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ],
+      "arrow-parens": [
+        2,
+        "as-needed",
+        {
+          "requireForBlockBody": true
+        }
+      ],
+      "operator-linebreak": 0,
+      "capitalized-comments": 0,
+      "react/no-danger": 1,
+      "react/no-array-index-key": 0,
+      "react/jsx-closing-bracket-location": [
+        2,
+        "tag-aligned"
+      ],
+      "react/jsx-space-before-closing": [
+        2,
+        "always"
+      ],
+      "react/jsx-tag-spacing": [
+        2,
+        {
+          "beforeSelfClosing": "always"
+        }
+      ],
+      "react/jsx-no-bind": 0,
+      "react/forbid-component-props": 0,
+      "react/require-default-props": 0,
+      "react/jsx-handler-names": 0
+    }
   }
 }
