@@ -19,10 +19,8 @@ exports.list = function (req, res) {
           return res.apiError('db populate error', err);
         }
 
-        const pop = _.map(items, item => _.pick(item, 'key', 'name', 'categoryChildren'));
-
         res.apiResponse({
-          menuItems: pop,
+          menuItems: items,
         });
       });
     });
