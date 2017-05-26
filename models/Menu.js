@@ -3,24 +3,28 @@ const _ = require('lodash');
 
 const Types = keystone.Field.Types;
 
-const MenuItem = new keystone.List('MenuItem', {
+const Menu = new keystone.List('Menu', {
   sortable: true,
   autokey: { from: 'name', path: 'key', unique: true },
 });
 
-MenuItem.add({
+Menu.add({
   name: { type: String, required: true },
   enabled: { type: Types.Boolean, default: true },
+  content: {
+    brief: { type: Types.Html, wysiwyg: true, height: 150 },
+    extended: { type: Types.Html, wysiwyg: true, height: 400 },
+  },
 });
 
-MenuItem.relationship({ ref: 'Category', path: 'categoryChildren', refPath: 'menuParent' });
-MenuItem.defaultColumns = 'name, enabled, sortOrder';
+Menu.relationship({ ref: 'Category', path: 'categoryChildren', refPath: 'menuParent' });
+Menu.defaultColumns = 'name, enabled, sortOrder';
 
-MenuItem.schema.set('toJSON', {
+Menu.schema.set('toJSON', {
   transform: (doc, rtn, options) => {
     rtn.categoryChildren = _.map(doc.categoryChildren, c => _.pick(c, 'key', 'name', 'url'));
     return _.pick(rtn, 'key', 'name', 'categoryChildren');
   },
 });
 
-MenuItem.register();
+Menu.register();

@@ -17,24 +17,25 @@
   "homepage": "https://github.com/dwest-teo/keystone-test#readme",
   "scripts": {
     "lint": "xo --ignore public/*/**.js --quiet --fix",
-    "dev": "NODE_ENV=development node keystone.js",
+    "dev": "NODE_ENV=development nodemon keystone.js",
     "start": "NODE_ENV=production node keystone.js"
   },
   "dependencies": {
+    "async": "2.1.4",
+    "cloudinary": "1.7.0",
+    "dotenv": "4.0.0",
+    "express-handlebars": "3.0.0",
+    "handlebars": "4.0.6",
     "keystone": "4.0.0-beta.5",
     "lodash": "^4.13.1",
     "moment": "2.17.1",
-    "cloudinary": "1.7.0",
-    "express-handlebars": "3.0.0",
-    "handlebars": "4.0.6",
     "node-sass": "4.5.0",
-    "node-sass-middleware": "0.11.0",
-    "dotenv": "4.0.0",
-    "async": "2.1.4"
+    "node-sass-middleware": "0.11.0"
   },
   "devDependencies": {
     "eslint-config-xo-react": "^0.11.1",
     "eslint-plugin-react": "^6.10.3",
+    "nodemon": "^1.11.0",
     "xo": "^0.18.1"
   },
   "engines": {

@@ -1,13 +1,13 @@
 const keystone = require('keystone');
 const _ = require('lodash');
 
-const MenuItem = keystone.list('MenuItem');
+const Menu = keystone.list('Menu');
 
 /**
  * List Menus
  */
 exports.list = function (req, res) {
-  MenuItem.model.find()
+  Menu.model.find()
     .where('enabled', true)
     .exec((err, items) => {
       if (err) {
@@ -20,7 +20,7 @@ exports.list = function (req, res) {
         }
 
         res.apiResponse({
-          menuItems: items,
+          menus: items,
         });
       });
     });
@@ -30,7 +30,7 @@ exports.list = function (req, res) {
  * Get Menu by ID
  */
 exports.get = function (req, res) {
-  MenuItem.model.findById(req.params.id).exec((err, item) => {
+  Menu.model.findById(req.params.id).exec((err, item) => {
     if (err) {
       return res.apiError('database error', err);
     }
@@ -40,7 +40,7 @@ exports.get = function (req, res) {
     }
 
     res.apiResponse({
-      menuItem: item,
+      menu: item,
     });
   });
 };

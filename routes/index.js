@@ -35,6 +35,6 @@ exports = module.exports = function (app) {
   app.get('/api/category/:id', keystone.middleware.api, routes.api.categories.get);
 
   // API - Menu Items
-  app.get('/api/menu-item/list', keystone.middleware.api, routes.api.menuItems.list);
-  app.get('/api/menu-item/:id', keystone.middleware.api, routes.api.menuItems.get);
+  app.get('/api/menu/list', keystone.middleware.api, routes.api.menus.list);
+  app.get('/api/menu/:id', keystone.middleware.api, routes.api.menus.get);
 };

@@ -20,9 +20,9 @@ Category.add({
     type: Types.Boolean,
     default: true,
   },
-  menuParent: {
+  menu: {
     type: Types.Relationship,
-    ref: 'MenuItem',
+    ref: 'Menu',
     dependsOn: {
       type: 'Child',
       enabled: true,
@@ -47,8 +47,8 @@ Category.add({
   },
 });
 
-Category.defaultSort = 'menuParent';
-Category.defaultColumns = 'name, type, menuParent, enabled';
+Category.defaultSort = 'menu';
+Category.defaultColumns = 'name, type, menu, enabled';
 Category.register();
 
 // const keystone = require('keystone');

@@ -6,16 +6,16 @@ const Post = keystone.list('Post');
  * List Posts
  */
 exports.list = function (req, res) {
-  // eslint-disable-next-line array-callback-return
-  Post.model.find((err, items) => {
-    if (err) {
-      return res.apiError('database error', err);
-    }
+  Post.model.find()
+    .where('state', 'published')
+    .populate(['author', 'categories'])
+    .exec((err, posts) => {
+      if (err) {
+        return res.apiError('database error', err);
+      }
 
-    res.apiResponse({
-      posts: items,
-    });
-  });
+      res.apiResponse({ posts });
+    })
 };
 
 /**
