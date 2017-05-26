@@ -14,7 +14,7 @@ exports.list = function (req, res) {
         return res.apiError('database error', err);
       }
 
-      keystone.populateRelated(items, 'categoryChildren', (err) => {
+      keystone.populateRelated(items, 'categories', (err) => {
         if (err) {
           return res.apiError('db populate error', err);
         }
